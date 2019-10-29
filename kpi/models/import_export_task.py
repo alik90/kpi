@@ -300,13 +300,14 @@ class ImportTask(ImportExportTask):
             raise NotImplementedError('cannot import into a collection at this'
                                       ' time')
 
-        if 'library' in survey_dict_keys:
+        #if 'library' in survey_dict_keys:
+        if filename.startswith('collection'):
             if not library:
                 raise ValueError('a library cannot be imported into the'
                                  ' form list')
-            if 'survey' in survey_dict_keys:
-                raise ValueError('An import cannot have both "survey" and'
-                                 ' "library" sheets.')
+            # if 'survey' in survey_dict_keys:
+            #    raise ValueError('An import cannot have both "survey" and'
+            #                     ' "library" sheets.')
             if destination:
                 raise SyntaxError('libraries cannot be imported into assets')
             collection = _load_library_content({
