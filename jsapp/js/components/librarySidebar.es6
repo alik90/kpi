@@ -290,6 +290,19 @@ class LibrarySidebar extends Reflux.Component {
             <i className='k-icon-folder' />
             {t('collection')}
           </bem.PopoverMenu__link>
+
+           <Dropzone
+            onDrop={(files, rejectedFiles, evt, pms={}) => this.dropFiles(files, rejectedFiles, evt, pms,'collection')}
+            multiple={false}
+            className='dropzone'
+            accept={validFileTypes()}
+           >
+            <bem.PopoverMenu__link>
+              <i className='k-icon-upload' />
+               {t('upload') + ' ' + t('collection')}
+            </bem.PopoverMenu__link>
+          </Dropzone>
+
         </ui.PopoverMenu>
 
         { this.state.sidebarCollections &&

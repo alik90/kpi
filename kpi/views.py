@@ -493,6 +493,7 @@ class ImportTaskViewSet(viewsets.ReadOnlyModelViewSet):
             raise exceptions.NotAuthenticated()
         itask_data = {
             'library': request.POST.get('library') not in ['false', False],
+            'import_type': request.POST.get('importType', None),
             # NOTE: 'filename' here comes from 'name' (!) in the POST data
             'filename': request.POST.get('name', None),
             'destination': request.POST.get('destination', None),

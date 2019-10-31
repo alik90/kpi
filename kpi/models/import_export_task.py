@@ -212,6 +212,7 @@ class ImportTask(ImportExportTask):
                 destination=dest_item,
                 destination_kls=dest_kls,
                 has_necessary_perm=has_necessary_perm,
+                import_type=self.data.get('import_type', None),
             )
             return
 
@@ -291,6 +292,7 @@ class ImportTask(ImportExportTask):
         destination = kwargs.get('destination', False)
         destination_kls = kwargs.get('destination_kls', False)
         has_necessary_perm = kwargs.get('has_necessary_perm', False)
+        import_type = kwargs.get('import_type')
 
         if destination and not has_necessary_perm:
             # redundant check
@@ -299,9 +301,8 @@ class ImportTask(ImportExportTask):
         if destination_kls == 'collection':
             raise NotImplementedError('cannot import into a collection at this'
                                       ' time')
-
-        #if 'library' in survey_dict_keys:
-        if filename.startswith('collection'):
+        # if 'library' in survey_dict_keys:
+        if import_type == 'collection':
             if not library:
                 raise ValueError('a library cannot be imported into the'
                                  ' form list')

@@ -30,10 +30,10 @@ from collections import defaultdict
 
 def _load_library_content(structure):
     content = structure.get('content', {})
-    if 'library' not in content:
-        raise Exception('to load a library, you must have a sheet called "library"')
-    library_sheet = content.get('library', [])
-    del content['library']
+    if 'survey' not in content:
+        raise Exception('to load a library, you must have a sheet called "survey"')
+    library_sheet = content.get('survey', [])
+    del content['survey']
 
     tag_name_to_pk = {} # Both a cache and a record of what to index later
     created_asset_pks = [] # A list of what to index at the end of the import

@@ -412,7 +412,7 @@ mixins.droppable = {
     });
   },
 
-  dropFiles (files, rejectedFiles, evt, pms={}) {
+  dropFiles (files, rejectedFiles, evt, pms={}, importType='') {
     files.map((file) => {
       var reader = new FileReader();
       reader.onload = (e)=> {
@@ -420,7 +420,8 @@ mixins.droppable = {
           base64Encoded: e.target.result,
           name: file.name,
           lastModified: file.lastModified,
-          totalFiles: files.length
+          totalFiles: files.length,
+          importType: importType
         }, pms);
 
         this._forEachDroppedFile(params);
